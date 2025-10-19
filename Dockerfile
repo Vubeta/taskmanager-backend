@@ -52,10 +52,10 @@ RUN groupadd --gid 1001 appuser && \
 # 2. Copy các layer đã được giải nén từ giai đoạn 'builder'
 # Copy theo thứ tự từ ít thay đổi nhất (dependencies)
 # đến thay đổi nhiều nhất (application)
-COPY --from=builder /app/build/extracted-jar/dependencies/ ./
-COPY --from=builder /app/build/extracted-jar/spring-boot-loader/ ./
-COPY --from=builder /app/build/extracted-jar/snapshot-dependencies/ ./
-COPY --from=builder /app/build/extracted-jar/application/ ./
+COPY --from=builder /app/build/extracted-jar/*.jar.layers/dependencies/ ./
+COPY --from=builder /app/build/extracted-jar/*.jar.layers/loader/ ./
+COPY --from=builder /app/build/extracted-jar/*.jar.layers/snapshot-dependencies/ ./
+COPY --from=builder /app/build/extracted-jar/*.jar.layers/application/ ./
 
 # 3. Chuyển sang user không phải root
 USER appuser
