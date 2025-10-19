@@ -65,4 +65,4 @@ EXPOSE 8080
 
 # 5. Entrypoint để chạy ứng dụng
 # 'JarLauncher' là trình khởi chạy khi sử dụng layered JARs
-ENTRYPOINT ["java", "org.springframework.boot.loader.JarLauncher"]
+ENTRYPOINT ["java", "org.springframework.boot.loader.launch.JarLauncher"]
