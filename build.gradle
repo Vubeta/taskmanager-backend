@@ -54,3 +54,7 @@ tasks.named('test') {
 tasks.named('bootJar') {
     layered {}
 }
+
+tasks.named('jar') {
+    enabled = false
+}
