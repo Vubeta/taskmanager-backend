@@ -1,0 +1,64 @@
+# ===========================
+# = APPLICATION INFO        =
+# ===========================
+spring:
+  application:
+    name: taskmanager
+  profiles:
+    active: ${SPRING_PROFILE:local}   # Mặc định chạy local nếu không set gì
+
+# ===========================
+# = COMMON CONFIG            =
+# ===========================
+app:
+  cors:
+    allowed-origins: http://localhost:5173
+  jwt:
+    secret: ${APP_JWT_SECRET:change_this_secret}
+    expirationMs: ${APP_JWT_EXPIRATIONMS:86400000}
+
+# ===========================
+# = LOCAL PROFILE (MySQL)   =
+# ===========================
+---
+spring:
+  config:
+    activate:
+      on-profile: local
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/task_db?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+    username: root
+    password: 2002040111Vu
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+
+# ===========================
+# = RENDER PROFILE (PostgreSQL)
+# ===========================
+---
+spring:
+  config:
+    activate:
+      on-profile: render
+
+  datasource:
+    url: ${SPRING_DATASOURCE_URL}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect

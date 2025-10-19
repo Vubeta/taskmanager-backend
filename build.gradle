@@ -35,11 +35,12 @@ dependencies {
     runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.5'
 
     // 🧱 Lombok
-    compileOnly 'org.projectlombok:lombok'
+    implementation 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
 
-    // 🗄️ MySQL
-    runtimeOnly 'com.mysql:mysql-connector-j'
+    // 🗄️ Database
+    runtimeOnly 'com.mysql:mysql-connector-j'           // cho MySQL
+    runtimeOnly 'org.postgresql:postgresql'             // cho PostgreSQL
 
     // 🧪 Test
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
