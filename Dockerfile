@@ -33,7 +33,7 @@ RUN ./gradlew build -x test --no-daemon
 RUN mkdir -p build/extracted-jar
 # Giải nén JAR thành các layer riêng biệt
 # (yêu cầu cấu hình 'layered()' trong build.gradle)
-RUN java -Djarmode=layertools -jar build/libs/*.jar extract --destination build/extracted-jar
+RUN java -Djarmode=tools -jar build/libs/*.jar extract --destination build/extracted-jar
 
 
 # --- Giai đoạn 2: Runtime (Final Stage) ---
