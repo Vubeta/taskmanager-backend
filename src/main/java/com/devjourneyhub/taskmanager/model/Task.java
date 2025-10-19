@@ -16,8 +16,11 @@ public class Task {
     private Long id;
 
     private String title;
+
     @Column(columnDefinition = "TEXT")
     private String description;
+
+    @Builder.Default
     private boolean completed = false;
 
     @Column(name = "created_at")

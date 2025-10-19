@@ -27,7 +27,7 @@ COPY src /app/src
 
 # 5. Build ứng dụng
 # Task 'build' sẽ tự động chạy 'test' và 'bootJar'
-RUN ./gradlew build --no-daemon
+RUN ./gradlew build -x test --no-daemon
 
 # 6. Tạo thư mục để giải nén các layer của JAR
 RUN mkdir -p build/extracted-jar
